@@ -1,6 +1,6 @@
 resource "vsphere_virtual_machine" "esxi" {
   count            = length(var.esxi.addresses)
-  name             = "${var.esxi.name-${count.index}}"
+  name             = "esxi-${count.index}"
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
   folder           = vsphere_folder.folder.path
@@ -14,11 +14,11 @@ resource "vsphere_virtual_machine" "esxi" {
 
   num_cpus = var.esxi.cpu
   memory = var.esxi.memory
-  guest_id = "${var.esxi.name-${count.index}}"
+  guest_id = "esxi-${count.index}"
 
   disk {
     size             = var.esxi.disk
-    label            = "${var.esxi.name-${count.index}}.lab_vmdk"
+    label            = "esxi-${count.index}.lab_vmdk"
     thin_provisioned = true
   }
 
