@@ -22,6 +22,11 @@ data "vsphere_network" "networkMgt" {
   datacenter_id = data.vsphere_datacenter.dc.id
 }
 
+data "vsphere_network" "networkData" {
+  name = var.esxi.networkData
+  datacenter_id = data.vsphere_datacenter.dc.id
+}
+
 resource "vsphere_folder" "folder" {
   path          = var.vcenter.folder
   type          = "vm"
