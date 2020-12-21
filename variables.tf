@@ -36,6 +36,8 @@ variable "esxi" {
     cpu = 8
     memory = 65536
     disk = 512
+    wait_for_guest_net_timeout = 0
+    nested_hv_enabled = "true"
     addresses = ["10.41.134.131", "10.41.134.132", "10.41.134.133"]
     networkData = "vxw-dvs-34-virtualwire-119-sid-1080118-sof2-01-vc08-avi-dev115"
     dns = "10.23.108.1"

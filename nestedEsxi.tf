@@ -15,6 +15,8 @@ resource "vsphere_virtual_machine" "esxi" {
   num_cpus = var.esxi.cpu
   memory = var.esxi.memory
   guest_id = "esxi-${count.index}"
+  wait_for_guest_net_timeout = var.esxi.wait_for_guest_net_timeout
+  nested_hv_enabled = var.esxi.nested_hv_enabled
 
   disk {
     size             = var.esxi.disk
