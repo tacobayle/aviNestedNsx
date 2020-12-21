@@ -14,13 +14,13 @@ resource "vsphere_virtual_machine" "esxi" {
 
   num_cpus = var.esxi.cpu
   memory = var.esxi.memory
-  guest_id = "esxi-${count.index}"
+  guest_id = "${var.esxi.name}-${count.index}"
   wait_for_guest_net_timeout = var.esxi.wait_for_guest_net_timeout
   nested_hv_enabled = var.esxi.nested_hv_enabled
 
   disk {
     size             = var.esxi.disk
-    label            = "esxi-${count.index}.lab_vmdk"
+    label            = "${var.esxi.name}-${count.index}.lab_vmdk"
     thin_provisioned = true
   }
 
@@ -35,7 +35,7 @@ resource "vsphere_virtual_machine" "esxi" {
       "guestinfo.gateway"   = var.esxi.gateway
       "guestinfo.dns"       = var.esxi.dns
       "guestinfo.password"  = var.esxi_password
-      "guestinfo.hostname"  = "esxi-${count.index}"
+      "guestinfo.hostname"  = "${var.esxi.name}-${count.index}"
     }
   }
 }
