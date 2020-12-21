@@ -26,14 +26,14 @@ resource "vsphere_virtual_machine" "esxi" {
     template_uuid = vsphere_content_library_item.files[0].id
   }
 
-//  vapp {
-//    properties = {
-//      "ipaddress"     = element(var.esxi.addresses, count.index)
-//      "netmask"   = var.esxi.netmask
-//      "gateway"  = var.esxi.gateway
-//      "dns" = var.esxi.dns
-//      "password" = var.esxi_password
-//      "hostname" = "esxi-${count.index}"
-//    }
+  vapp {
+    properties = {
+      "ipaddress"     = element(var.esxi.addresses, count.index)
+      "netmask"   = var.esxi.netmask
+      "gateway"  = var.esxi.gateway
+      "dns" = var.esxi.dns
+      "password" = var.esxi_password
+      "hostname" = "esxi-${count.index}"
+    }
   }
 }
