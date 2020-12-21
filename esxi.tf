@@ -4,11 +4,13 @@ resource "vsphere_virtual_machine" "esxi" {
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
   folder           = vsphere_folder.folder.path
+
   network_interface {
     network_id = data.vsphere_network.networkMgt.id
   }
+
   network_interface {
-    network_id = data.vsphere_network.networkData.id
+    network_id = data.vsphere_network.networkMgt.id
   }
 
   num_cpus = var.esxi.cpu
