@@ -8,9 +8,9 @@ resource "vsphere_virtual_machine" "esxi" {
     network_id = data.vsphere_network.networkMgt.id
   }
 
-  network_interface {
-    network_id = data.vsphere_network.networkData.id
-  }
+//  network_interface {
+//    network_id = data.vsphere_network.networkData.id
+//  }
 
   num_cpus = var.esxi.cpu
   memory = var.esxi.memory
@@ -26,14 +26,14 @@ resource "vsphere_virtual_machine" "esxi" {
     template_uuid = vsphere_content_library_item.files[0].id
   }
 
-//  vapp {
-//    properties = {
-//      "ipaddress" = element(var.esxi.addresses, count.index)
-//      "netmask"   = var.esxi.netmask
-//      "gateway"   = var.esxi.gateway
-//      "dns"       = var.esxi.dns
-//      "password"  = var.esxi_password
-//      "hostname"  = "esxi-${count.index}"
-//    }
-//  }
+  vapp {
+    properties = {
+      "ipaddress" = element(var.esxi.addresses, count.index)
+      "netmask"   = var.esxi.netmask
+      "gateway"   = var.esxi.gateway
+      "dns"       = var.esxi.dns
+      "password"  = var.esxi_password
+      "hostname"  = "esxi-${count.index}"
+    }
+  }
 }
