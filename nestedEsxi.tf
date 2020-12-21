@@ -8,9 +8,9 @@ resource "vsphere_virtual_machine" "esxi" {
     network_id = data.vsphere_network.networkMgt.id
   }
 
-//  network_interface {
-//    network_id = data.vsphere_network.networkData.id
-//  }
+  network_interface {
+    network_id = data.vsphere_network.networkData.id
+  }
 
   num_cpus = var.esxi.cpu
   memory = var.esxi.memory
