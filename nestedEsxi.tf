@@ -1,5 +1,5 @@
 resource "vsphere_virtual_machine" "esxi" {
-  count            = length(var.esxi.)
+  count            = length(var.esxi.addresses)
   name             = "${var.esxi.name-${count.index}}"
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
