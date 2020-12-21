@@ -34,7 +34,7 @@ variable "esxi" {
   default = {
     name = "esxi"
     cpu = 8
-    memory = 64
+    memory = 65536
     disk = 512
     addresses = ["10.41.134.131", "10.41.134.132", "10.41.134.133"]
     networkData = "vxw-dvs-34-virtualwire-119-sid-1080118-sof2-01-vc08-avi-dev115"
