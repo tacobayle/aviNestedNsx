@@ -27,13 +27,13 @@ resource "vsphere_virtual_machine" "esxi" {
   }
 
   vapp {
-//    properties = {
+    properties = {
       "ipaddress" = element(var.esxi.addresses, count.index)
       "netmask"   = var.esxi.netmask
       "gateway"   = var.esxi.gateway
       "dns"       = var.esxi.dns
       "password"  = var.esxi_password
       "hostname"  = "esxi-${count.index}"
-//    }
+    }
   }
 }
