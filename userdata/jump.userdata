@@ -112,7 +112,7 @@ write_files:
       $ORIGIN ${domain}.
       dns                     A       ${ip}
       $TTL 3600       ; 1 hour
-      Pod-A-esxi0                             A       ${ipEsxiA)
+      Pod-A-esxi0                             A       ${ipEsxiA}
       Pod-A-esxi1                             A       ${ipEsxiB}
       Pod-A-esxi2                             A       ${ipEsxiC}
       Pod-A-vcenter                           A       ${ipNestedVcenter}
