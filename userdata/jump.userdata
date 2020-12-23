@@ -1,0 +1,42 @@
+#cloud-config
+users:
+  - name: ${username}
+    lock_passwd: true
+    shell: /bin/bash
+    sudo:  ALL=(ALL) NOPASSWD:ALL
+    chpasswd: {expire: False}
+    ssh_authorized_keys:
+      - ${pubkey}
+
+packages:
+  - language-pack-en
+  - python3-pip
+  - python-pip
+  - python-jmespath
+  - sshpass
+  - bind9
+  - bind9utils
+  - bind9-doc
+  - bind9-host
+  - ntp
+
+write_files:
+  - content: |
+      #!/bin/bash
+      sudo cp /etc/ntp.conf /etc/ntp.conf.old
+      sudo tee /etc/ntp.conf  > /dev/null <<EOT
+      pool 0.ubuntu.pool.ntp.org iburst
+      pool 1.ubuntu.pool.ntp.org iburst
+      pool 2.ubuntu.pool.ntp.org iburst
+      pool 3.ubuntu.pool.ntp.org iburst
+      EOT
+      echo "cloud init done" | tee /tmp/cloudInitDone.log
+    path: /opt/bootstrap.sh
+    permissions: 0755
+
+  - content: |
+      ${username} ALL=(ALL) NOPASSWD:ALL
+    path: /etc/sudoers.d/${username}
+
+runcmd:
+  - /opt/bootstrap.sh

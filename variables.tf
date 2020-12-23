@@ -26,7 +26,7 @@ variable "contentLibrary" {
   default = {
     name = "Nested NSX build"
     description = "Nested NSX build"
-    files = ["/home/ubuntu/Nested_ESXi7.0u1_Appliance_Template_v1.ova"]
+    files = ["/home/ubuntu/Nested_ESXi7.0u1_Appliance_Template_v1.ova", "/home/ubuntu/bionic-server-cloudimg-amd64.ova", "/home/ubuntu/vsca.ova"]
   }
 }
 
@@ -58,3 +58,16 @@ variable "nestedVcenter" {
   }
 }
 
+variable "jump" {
+  type = map
+  default = {
+    name = "jump"
+    cpu = 2
+    memory = 4096
+    disk = 20
+    public_key_path = "~/.ssh/cloudKey.pub"
+    private_key_path = "~/.ssh/cloudKey"
+    wait_for_guest_net_timeout = 2
+    username = "ubuntu"
+  }
+}

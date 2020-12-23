@@ -5,6 +5,7 @@ resource "vsphere_content_library" "library" {
 }
 
 resource "vsphere_content_library_item" "files" {
+  depends_on = [null_resource.vcenter]
   count = length(var.contentLibrary.files)
   name        = basename(element(var.contentLibrary.files, count.index))
   description = basename(element(var.contentLibrary.files, count.index))
