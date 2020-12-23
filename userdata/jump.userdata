@@ -131,9 +131,9 @@ write_files:
                               NS      dns.${domain}.
       ${lastOctet}            PTR     dns.${domain}.
 
-      ${lastOctetEsxiA)       PTR     Pod-A-esxi0.${domain}.
-      ${lastOctetEsxiB)       PTR     Pod-B-esxi0.${domain}.
-      ${lastOctetEsxiC)       PTR     Pod-C-esxi0.${domain}.
+      ${lastOctetEsxiA}       PTR     Pod-A-esxi0.${domain}.
+      ${lastOctetEsxiB}       PTR     Pod-B-esxi0.${domain}.
+      ${lastOctetEsxiC}       PTR     Pod-C-esxi0.${domain}.
       ${lastOctetVcenter}     PTR     Pod-A-vcenter
       EOT
       echo "cloud init done" | tee /tmp/cloudInitDone.log
