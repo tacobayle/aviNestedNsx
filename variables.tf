@@ -47,14 +47,10 @@ variable "esxi" {
   }
 }
 
-variable "backendIps" {
-  type = list
-  default = ["10.7.6.10", "10.7.6.11"]
-}
-
 variable "nestedVcenter" {
   default = {
     isoPath = "/home/ubuntu/VMware-VCSA-all-7.0.1-17327517.iso"
+    ipCidr = "10.41.134.134/22"
   }
 }
 
@@ -69,5 +65,17 @@ variable "jump" {
     private_key_path = "~/.ssh/cloudKey"
     wait_for_guest_net_timeout = 2
     username = "ubuntu"
+    ipCidr = "10.41.134.135/22"
+    dns = "10.23.108.1, 10.16.142.111"
+    defaultGw = "10.0.0.1"
+    netplanFile = "/etc/netplan/50-cloud-init.yaml"
+  }
+}
+
+variable "bind" {
+  default = {
+    forwarder = "10.23.108.1"
+    domain = "nsx.avidemo.fr"
+    reverse = "10.41.134"
   }
 }
