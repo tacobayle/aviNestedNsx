@@ -7,17 +7,6 @@ data "template_file" "jumpbox_userdata" {
   }
 }
 
-
-data "template_file" "jumpbox_userdata" {
-  template = file("${path.module}/userdata/jump.userdata")
-  vars = {
-    pubkey        = file(var.jump.public_key_path)
-    avisdkVersion = var.jump.avisdkVersion
-    username = var.jump.username
-    privateKey = var.jump.private_key_path
-  }
-}
-
 resource "vsphere_virtual_machine" "jump" {
   name             = var.jump.name
   datastore_id     = data.vsphere_datastore.datastore.id
