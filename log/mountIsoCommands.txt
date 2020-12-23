@@ -1,0 +1,26 @@
+ubuntu@nic-jump-sofia:~$
+ubuntu@nic-jump-sofia:~$ mkdir /mnt/iso
+mkdir: cannot create directory ‘/mnt/iso’: Permission denied
+ubuntu@nic-jump-sofia:~$ sudo mkdir /mnt/iso
+ubuntu@nic-jump-sofia:~$ sudo mount -o loop ^C
+ubuntu@nic-jump-sofia:~$ ls
+Nested_ESXi7.0u1_Appliance_Template_v1.ova  bionic-server-cloudimg-amd64.ova                                   private.key        tmp
+VMware-VCSA-all-7.0.1-17327517.iso          bionic-server-cloudimg-i386.img                                    public.key         vghetto-scripts
+ansibleAviVs                                controller-20.1.2-9171.ova                                         pythonAviVs        vmwAviController
+archives                                    controller-20.1.2-9171.qcow2                                       snap               vmwAviControllerFromContentLibrary
+aviNestedNsx                                en_windows_10_business_editions_version_2004_x64_dvd_d06ef8c5.iso  terraform.tfstate  vmwContentLibrary
+aviVmw                                      flingAviVmc                                                        terraformAviVs
+ubuntu@nic-jump-sofia:~$ sudo mount -o loop VMware-VCSA-all-7.0.1-17327517.iso /mnt/iso
+mount: /mnt/iso: WARNING: device write-protected, mounted read-only.
+ubuntu@nic-jump-sofia:~$ ls /mnt/iso/
+dbschema             readme-de.txt  readme-fr.txt  readme-ko.txt     readme-zh-TW.txt  umds  vcsa-cli-installer
+migration-assistant  readme-es.txt  readme-ja.txt  readme-zh-CN.txt  readme.txt        vcsa  vcsa-ui-installer
+ubuntu@nic-jump-sofia:~$
+ubuntu@nic-jump-sofia:~$ cd vcsa
+-bash: cd: vcsa: No such file or directory
+ubuntu@nic-jump-sofia:~$ cd /mnt/iso/vcsa
+ubuntu@nic-jump-sofia:/mnt/iso/vcsa$ ls
+VMware-vCenter-Server-Appliance-7.0.1.00200-17327517_OVF10.ova  ovftool  version.txt
+ubuntu@nic-jump-sofia:/mnt/iso/vcsa$ more version.txt
+VMware-vCenter-Server-Appliance-7.0.1.00200-17327517
+ubuntu@nic-jump-sofia:~$ sudo umount /mnt/iso

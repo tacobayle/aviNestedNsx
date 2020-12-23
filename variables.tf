@@ -51,3 +51,10 @@ variable "backendIps" {
   type = list
   default = ["10.7.6.10", "10.7.6.11"]
 }
+
+variable "nestedVcenter" {
+  default = {
+    isoPath = "/home/ubuntu/VMware-VCSA-all-7.0.1-17327517.iso"
+  }
+}
+
