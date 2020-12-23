@@ -99,8 +99,8 @@ write_files:
       EOT
       #
       sudo tee /var/lib/bind/db.${domain} > /dev/null <<EOT
-      $ORIGIN .
-      $TTL 60
+      '$ORIGIN' .
+      '$TTL' 60
       ${domain}                IN SOA dns.${domain}. admin.${domain}. (
                                       329        ; serial
                                       604800     ; refresh (1 week)
@@ -109,9 +109,9 @@ write_files:
                                       604800     ; minimum (1 week)
                                       )
                               NS      dns.${domain}.
-      $ORIGIN ${domain}.
+      '$ORIGIN' ${domain}.
       dns                     A       ${ip}
-      $TTL 3600       ; 1 hour
+      '$TTL' 3600       ; 1 hour
       Pod-A-esxi0                             A       ${ipEsxiA}
       Pod-A-esxi1                             A       ${ipEsxiB}
       Pod-A-esxi2                             A       ${ipEsxiC}
@@ -119,8 +119,8 @@ write_files:
       EOT
       #
       sudo tee /var/lib/bind/db.${reverse} > /dev/null <<EOT
-      $ORIGIN .
-      $TTL 60
+      '$ORIGIN' .
+      '$TTL' 60
       ${reverse}.in-addr.arpa     IN SOA  dns.${domain}. admin.${domain}. (
                                       298        ; serial
                                       604800     ; refresh (1 week)
