@@ -8,7 +8,7 @@ provider "vsphere" {
 provider "dns" {
   update {
     server        = split("/", var.jump.ipCidr)[0]
-    key_name      = var.bind.keyName
+    key_name      = "${var.bind.keyName}."
     key_algorithm = "hmac-md5"
     key_secret    = base64encode(var.bind_password)
   }
