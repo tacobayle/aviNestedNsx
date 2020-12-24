@@ -10,7 +10,7 @@ data "template_file" "jumpbox_userdata" {
     dns      = var.jump.dns
     netplanFile = var.jump.netplanFile
     privateKey = var.jump.private_key_path
-    forwarders = var.bind.forwarder
+    forwarders = var.bind.forwarders
     domain = var.bind.domain
     reverse = var.bind.reverse
     keyName = var.bind.keyName
