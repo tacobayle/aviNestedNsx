@@ -27,7 +27,7 @@ resource "dns_a_record_set" "vcenter" {
 resource "dns_ptr_record" "vcenter" {
   depends_on = [vsphere_virtual_machine.jump]
   zone = "${var.bind.reverse}.in-addr.arpa."
-  name = "${split(".", split("/", var.nestedVcenter.ipCidr)[0])[3]}."
-  ptr  = var.nestedVcenter.name
+  name = split(".", split("/", var.nestedVcenter.ipCidr)[0])[3]
+  ptr  = "${var.nestedVcenter.name}."
   ttl  = 60
 }
