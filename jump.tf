@@ -10,18 +10,12 @@ data "template_file" "jumpbox_userdata" {
     dns      = var.jump.dns
     netplanFile = var.jump.netplanFile
     privateKey = var.jump.private_key_path
-    forwarder = var.bind.forwarder
+    forwarders = var.bind.forwarder
     domain = var.bind.domain
     reverse = var.bind.reverse
-    ipNestedVcenter = split("/", var.nestedVcenter.ipCidr)[0]
-    lastOctetVcenter = split(".", split("/", var.nestedVcenter.ipCidr)[0])[3]
-    ipEsxiA = split("/", var.esxi.addresses[0])[0]
-    ipEsxiB = split("/", var.esxi.addresses[1])[0]
-    ipEsxiC = split("/", var.esxi.addresses[2])[0]
-    lastOctetEsxiA = split(".", split("/", var.esxi.addresses[0])[0])[3]
-    lastOctetEsxiB = split(".", split("/", var.esxi.addresses[1])[0])[3]
-    lastOctetEsxiC = split(".", split("/", var.esxi.addresses[2])[0])[3]
-      }
+    keyName = var.bind.keyName
+    secret = base64encode(var.bind_password)
+  }
 }
 
 resource "vsphere_virtual_machine" "jump" {

@@ -7,6 +7,7 @@ variable "vsphere_server" {}
 variable "avi_password" {}
 variable "avi_user" {}
 variable "esxi_password" {}
+variable "bind_password" {}
 #
 # Other Variables
 #
@@ -51,6 +52,7 @@ variable "nestedVcenter" {
   default = {
     isoPath = "/home/ubuntu/VMware-VCSA-all-7.0.1-17327517.iso"
     ipCidr = "10.41.134.134/22"
+    name = "vcenter"
   }
 }
 
@@ -74,8 +76,9 @@ variable "jump" {
 
 variable "bind" {
   default = {
-    forwarder = "10.23.108.1"
+    keyName = "myKeyName"
+    forwarders = "10.23.108.1; 10.23.108.2; 10.16.142.111"
     domain = "nsx.avidemo.fr"
-    reverse = "10.41.134"
+    reverse = "134.41.10"
   }
 }
