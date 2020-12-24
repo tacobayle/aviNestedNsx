@@ -12,7 +12,7 @@ resource "dns_ptr_record" "esxi" {
   count = length(var.esxi.addresses)
   zone = "${var.bind.reverse}.in-addr.arpa."
   name = split(".", element(var.esxi.addresses, count.index))[3]
-  ptr  = "${var.esxi.name}-${count.index}"
+  ptr  = "${var.esxi.name}-${count.index}."
   ttl  = 60
 }
 
@@ -27,7 +27,7 @@ resource "dns_a_record_set" "vcenter" {
 resource "dns_ptr_record" "vcenter" {
   depends_on = [vsphere_virtual_machine.jump]
   zone = "${var.bind.reverse}.in-addr.arpa."
-  name = split(".", split("/", var.nestedVcenter.ipCidr)[0])[3]
+  name = "${split(".", split("/", var.nestedVcenter.ipCidr)[0])[3]}."
   ptr  = var.nestedVcenter.name
   ttl  = 60
 }
